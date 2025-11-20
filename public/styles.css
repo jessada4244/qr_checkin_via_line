@@ -1,0 +1,166 @@
+        /* --- Global Style --- */
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* --- Left Panel: QR Code --- */
+        .left-panel {
+            flex: 1.5;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #ddd;
+            position: relative;
+        }
+        .header-logo {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #06c755;
+            margin-bottom: 10px;
+        }
+        .sub-header {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        #qr-box {
+            padding: 20px;
+            border: 2px dashed #06c755;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        #status-text {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: #888;
+            animation: pulse 2s infinite;
+            height: 30px; /* กันกระตุก */
+        }
+
+        /* --- Right Panel: History List --- */
+        .right-panel {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .panel-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .date-badge {
+            font-size: 0.9rem;
+            background: #e9ecef;
+            padding: 5px 12px;
+            border-radius: 20px;
+            color: #555;
+        }
+        
+        /* Scrollable List Area */
+        #history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* --- User Card Design --- */
+        .user-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid #06c755;
+            animation: slideIn 0.5s forwards;
+        }
+        .user-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid #eee;
+        }
+        .user-info { flex: 1; }
+        .user-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0;
+        }
+        .checkin-time {
+            font-size: 0.9rem;
+            color: #999;
+            margin: 0;
+        }
+
+        /* --- Animations --- */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* --- Responsive Design (Mobile/Tablet) --- */
+        @media screen and (max-width: 768px) {
+            body {
+                flex-direction: column; /* เรียงลงแนวตั้ง */
+                height: auto; /* ปล่อยความสูงอิสระ */
+                overflow-y: auto; /* ให้ Scroll หน้าเว็บได้ */
+            }
+
+            /* ปรับแผงซ้าย (QR Code) */
+            .left-panel {
+                flex: 0 0 auto; /* ไม่ยืดเต็มจอ ให้สูงตามเนื้อหา */
+                width: 100%;
+                padding: 40px 20px;
+                border-right: none; /* ลบเส้นขั่นแนวตั้ง */
+                border-bottom: 1px solid #ddd; /* เพิ่มเส้นคั่นแนวนอนแทน */
+            }
+
+            /* ปรับแผงขวา (List) */
+            .right-panel {
+                flex: 1 0 auto;
+                width: 100%;
+                padding: 20px;
+                /* ในมือถือให้ List ยาวลงไปเลย ไม่ต้องมี Scroll ซ้อน */
+                height: auto; 
+            }
+
+            #history-list {
+                overflow-y: visible; /* ปิด Scrollbar แยกของ List ให้ใช้ Scroll หลักของ Body */
+            }
+
+            /* ปรับขนาดตัวอักษรให้อ่านง่ายขึ้นในจอมือถือ */
+            .header-logo {
+                font-size: 2rem;
+            }
+            
+            .sub-header {
+                margin-bottom: 20px;
+            }
+
+            #qr-box {
+                padding: 15px;
+            }
+        }

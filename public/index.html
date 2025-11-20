@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สแกนเข้าใช้งาน</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="left-panel">
+        <div class="header-logo">LINE Check-in</div>
+        <div class="sub-header">สแกนเพื่อลงทะเบียนเข้างาน</div>
+        
+        <div id="qr-box">
+            <div id="qr-container"></div>
+        </div>
+        
+        <p id="status-text">กำลังรอการสแกน...</p>
+    </div>
+
+    <div class="right-panel">
+        <div class="panel-title">
+            ผู้ใช้งานล่าสุด
+            <span class="date-badge" id="current-date">วันนี้</span>
+        </div>
+        <div id="history-list">
+            </div>
+    </div>
+
+    <script src="/public/gitinore/config.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
