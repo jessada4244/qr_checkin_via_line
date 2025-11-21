@@ -4,6 +4,8 @@
 เว็บแอปพลิเคชันสำหรับบันทึกเวลาหรือเช็คอิน โดยใช้งานร่วมกับ LINE (LIFF) เพื่อดึงข้อมูลผู้ใช้งาน และบันทึกข้อมูลลงใน Firebase
 
 **เข้าใช้งาน:** [https://qr-checkin-line.web.app/]
+<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/48e91499-978d-495b-91af-9851862cf065" />
+
 
 ## ✨ ฟีเจอร์หลัก
 
