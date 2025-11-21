@@ -5,6 +5,8 @@
 
 **เข้าใช้งาน:** [https://qr-checkin-line.web.app/]
 <img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/48e91499-978d-495b-91af-9851862cf065" />
+หน้าจอรองรับการใช้งานผ่านมือถือ
+<img width="279" height="595" alt="image" src="https://github.com/user-attachments/assets/a62400c4-cb05-4a70-a645-eb23dcf64f8a" />
 
 
 ## ✨ ฟีเจอร์หลัก
