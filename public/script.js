@@ -1,18 +1,13 @@
-// monitor-script.js
 
-// 1. Initialize Firebase
-// (ตัวแปร firebaseConfig มาจากไฟล์ config.js)
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const db = firebase.firestore();
 
-// ตัวแปร Global
 let currentSessionId = null;
 let sessionUnsubscribe = null;
 let logUnsubscribe = null;
 
-// แสดงวันที่ปัจจุบันเมื่อโหลดหน้าเว็บ
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('current-date').innerText = new Date().toLocaleDateString('th-TH', {
         weekday: 'long', day: 'numeric', month: 'short'
@@ -24,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cleanUpOldLogs();    // ลบ Log เก่า
 });
 
-// --- 2. Core Functions ---
+
 
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -36,11 +31,11 @@ function generateUUID() {
 function initSession() {
     currentSessionId = generateUUID();
     
-    // ใช้ตัวแปร myLiffId ที่ประกาศไว้ใน config.js
+
     const liffUrl = `https://liff.line.me/${myLiffId}?key=${currentSessionId}`;
 
     const qrContainer = document.getElementById("qr-container");
-    qrContainer.innerHTML = ""; // เคลียร์ QR เก่า
+    qrContainer.innerHTML = ""; 
 
     new QRCode(qrContainer, {
         text: liffUrl,
@@ -73,14 +68,13 @@ function listenToLogin() {
 }
 
 function processLogin(data) {
-    // แจ้งเตือนหน้าจอ
+ 
     const statusText = document.getElementById("status-text");
     statusText.innerText = `ยินดีต้อนรับคุณ ${data.displayName}!`;
-    statusText.style.color = "#06c755"; // สีเขียว LINE
+    statusText.style.color = "#06c755"; 
 
     const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
-    // A. เก็บข้อมูลลง User Profile
     const userRef = db.collection("users").doc(data.userId);
     userRef.set({
         displayName: data.displayName,
@@ -103,13 +97,11 @@ function processLogin(data) {
         timestamp: timestamp
     });
 
-    // หน่วงเวลาเล็กน้อย แล้วสร้าง QR ใหม่
+
     setTimeout(() => {
         initSession();
-    }, 2500);
+    }, 1500);
 }
-
-// --- 3. Utility Functions ---
 
 function cleanUpOldLogs() {
     console.log("Checking for old logs to delete...");
